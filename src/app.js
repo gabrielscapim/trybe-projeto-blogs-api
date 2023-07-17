@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginRoutes, userRoutes, categoryRoutes } = require('./routes');
+const { loginRoutes, userRoutes, categoryRoutes, blogPostRoutes } = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateLoginFields } = require('./middlewares/validateLoginFields');
 
@@ -16,6 +16,7 @@ app.use(express.json());
 app.use('/login', validateLoginFields, loginRoutes);
 app.use('/user', userRoutes);
 app.use('/categories', categoryRoutes);
+app.use('/post', blogPostRoutes);
 app.use(errorHandler);
 
 // ...
