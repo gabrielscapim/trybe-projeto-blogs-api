@@ -8,10 +8,17 @@ const validateToken = async (req, _res, next) => {
     }
 
     try {
-        const tokenSended = authorization.split(' ')[1];
-        const payload = getPayload(tokenSended);
+        // O if é necessário para passar no requisito 08
+        if (authorization.includes('Bearer')) {
+            const payload = getPayload(authorization.split(' ')[1]);
+            req.payload = payload;
+            
+            return next();
+        }
+
+        const payload = getPayload(authorization);
         req.payload = payload;
-        
+            
         return next();
     } catch (error) {
         console.log(error);
