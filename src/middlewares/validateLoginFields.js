@@ -1,4 +1,4 @@
-const validateLoginFields = async (req, res, next) => {
+const validateLoginFields = async (req, _res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
