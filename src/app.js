@@ -1,5 +1,5 @@
 const express = require('express');
-const { loginRoutes } = require('./routes');
+const { loginRoutes, userRoutes } = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { validateLoginFields } = require('./middlewares/validateLoginFields');
 
@@ -14,6 +14,7 @@ app.get('/', (_request, response) => {
 
 app.use(express.json());
 app.use('/login', validateLoginFields, loginRoutes);
+app.use('/user', userRoutes);
 app.use(errorHandler);
 
 // ...
