@@ -1,5 +1,7 @@
 const { blogPostService, postCategoryService } = require('../services');
 
+const serverErrorMessage = { message: 'Erro interno' };
+
 const createBlogPost = async (req, res) => {
     try {
         const { title, content, categoryIds } = req.body;
@@ -14,7 +16,7 @@ const createBlogPost = async (req, res) => {
         return res.status(201).json(blogPost);
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ message: 'Erro interno' });
+        return res.status(500).json(serverErrorMessage);
     }
 };
 
@@ -25,7 +27,7 @@ const getAllBlogPosts = async (_req, res) => {
         return res.status(200).json(blogPosts);
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ message: 'Erro interno' });
+        return res.status(500).json(serverErrorMessage);
     }
 };
 
@@ -42,7 +44,7 @@ const getBlogPostById = async (req, res) => {
         return res.status(200).json(blogPost);
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ message: 'Erro interno' });
+        return res.status(500).json(serverErrorMessage);
     }
 };
 
@@ -58,7 +60,20 @@ const updateBlogPost = async (req, res) => {
         return res.status(200).json(blogPost);
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ message: 'Erro interno' });
+        return res.status(500).json(serverErrorMessage);
+    }
+};
+
+const deleteBlogPost = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        await blogPostService.deleteBlogPost(id);
+
+        return res.status(204).json();
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(serverErrorMessage);
     }
 };
 
@@ -67,4 +82,5 @@ module.exports = {
     getAllBlogPosts,
     getBlogPostById,
     updateBlogPost,
+    deleteBlogPost,
 };

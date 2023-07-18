@@ -51,9 +51,16 @@ const updateBlogPost = async (id, title, content) => {
     return returnFromSequelize;
 };
 
+const deleteBlogPost = async (id) => {
+    const returnFromSequelize = await BlogPost.destroy({ where: { id } });
+
+    return returnFromSequelize;
+};
+
 module.exports = {
     createBlogPost,
     getAllBlogPosts,
     getBlogPostById,
     updateBlogPost,
+    deleteBlogPost,
 };

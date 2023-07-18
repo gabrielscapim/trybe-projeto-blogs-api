@@ -1,6 +1,6 @@
 const { blogPostService } = require('../services');
 
-const validateUser = async (req, _res, next) => {
+const validateUserFromBlogPost = async (req, _res, next) => {
     const { data: { id: tokenUserId } } = req.payload;
     const { id } = req.params;
     const { dataValues: { userId: blogPostUserId } } = await blogPostService.getBlogPostById(id);
@@ -13,5 +13,5 @@ const validateUser = async (req, _res, next) => {
 };
 
 module.exports = {
-    validateUser,
+    validateUserFromBlogPost,
 };
