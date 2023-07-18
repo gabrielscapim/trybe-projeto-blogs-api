@@ -1,4 +1,4 @@
-const { BlogPost, User, Category } = require('../models');
+const { BlogPost, User, Category, Sequelize } = require('../models');
 
 const currentDate = new Date();
 const formattedDate = currentDate.toISOString();
@@ -57,10 +57,30 @@ const deleteBlogPost = async (id) => {
     return returnFromSequelize;
 };
 
+const findBlogPostByQuery = (query) => BlogPost.findAll({
+    where: {
+        [Sequelize.Op.or]: [
+            { title: { [Sequelize.Op.like]: `%${query}%` } },
+            { content: { [Sequelize.Op.like]: `%${query}%` } },
+        ],
+    },
+    include: [{ model: User,
+        as: 'user',
+        attributes: { 
+            exclude: ['password'] },
+        },
+        { model: Category,
+          as: 'categories',
+          through: { 
+            attributes: [] },
+        }],
+});
+
 module.exports = {
     createBlogPost,
     getAllBlogPosts,
     getBlogPostById,
     updateBlogPost,
     deleteBlogPost,
+    findBlogPostByQuery,
 };

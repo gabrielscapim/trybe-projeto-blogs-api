@@ -77,10 +77,28 @@ const deleteBlogPost = async (req, res) => {
     }
 };
 
+const findBlogPostByQuery = async (req, res) => {
+    try {
+        const { q: query } = req.query;
+
+        if (query === '') {
+            return getAllBlogPosts(req, res);
+        }
+        
+        const blogPosts = await blogPostService.findBlogPostByQuery(query);
+
+        return res.status(200).json(blogPosts);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(serverErrorMessage);
+    }
+};
+
 module.exports = {
     createBlogPost,
     getAllBlogPosts,
     getBlogPostById,
     updateBlogPost,
     deleteBlogPost,
+    findBlogPostByQuery,
 };

@@ -7,6 +7,7 @@ const { validateUpdateBlogPost } = require('../middlewares/validateUpdateBlogPos
 const { validateUserFromBlogPost } = require('../middlewares/validateUserFromBlogPost');
 
 route.post('/', validateToken, validadeCreateBlogPost, blogPostController.createBlogPost);
+route.get('/search', validateToken, blogPostController.findBlogPostByQuery);
 route.get('/', validateToken, blogPostController.getAllBlogPosts);
 route.get('/:id', validateToken, blogPostController.getBlogPostById);
 route.put(
