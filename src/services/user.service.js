@@ -12,9 +12,12 @@ const createUser = async (userDetails) => {
     return result;
 };
 
+const deleteUser = (id) => User.destroy({ where: { id } });
+
 module.exports = {
     getUserByEmail,
     createUser,
     getAllUsers,
     getUserById,
+    deleteUser,
 };
