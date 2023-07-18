@@ -1,9 +1,9 @@
 const { BlogPost, User, Category } = require('../models');
 
-const createBlogPost = async (title, content, userId) => {
-    const currentDate = new Date();
-    const formattedDate = currentDate.toISOString();
+const currentDate = new Date();
+const formattedDate = currentDate.toISOString();
 
+const createBlogPost = async (title, content, userId) => {
     const blogPost = await BlogPost.create({ 
         title,
         content,
@@ -42,8 +42,18 @@ const getBlogPostById = (id) => BlogPost.findOne({
     where: { id },
 });
 
+const updateBlogPost = async (id, title, content) => {
+    const [returnFromSequelize] = await BlogPost.update(
+        { title, content, updated: formattedDate },
+        { where: { id } },  
+    );
+
+    return returnFromSequelize;
+};
+
 module.exports = {
     createBlogPost,
     getAllBlogPosts,
     getBlogPostById,
+    updateBlogPost,
 };

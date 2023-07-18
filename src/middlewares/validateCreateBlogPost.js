@@ -1,5 +1,5 @@
 const { categoryService } = require('../services');
-const addBlogPostSchema = require('./validations/schemas');
+const { addBlogPostSchema } = require('./validations/schemas');
 
 const validadeCreateBlogPost = async (req, _res, next) => {
     const { error } = addBlogPostSchema.validate(req.body);

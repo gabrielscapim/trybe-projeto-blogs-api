@@ -46,8 +46,25 @@ const getBlogPostById = async (req, res) => {
     }
 };
 
+const updateBlogPost = async (req, res) => {
+    try {
+        const { title, content } = req.body;
+        const { id } = req.params;
+    
+        await blogPostService.updateBlogPost(id, title, content);
+
+        const blogPost = await blogPostService.getBlogPostById(id);
+
+        return res.status(200).json(blogPost);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: 'Erro interno' });
+    }
+};
+
 module.exports = {
     createBlogPost,
     getAllBlogPosts,
     getBlogPostById,
+    updateBlogPost,
 };
