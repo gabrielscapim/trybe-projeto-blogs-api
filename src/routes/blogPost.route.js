@@ -4,5 +4,6 @@ const { validadeCreateBlogPost } = require('../middlewares/validateCreateBlogPos
 const { validateToken } = require('../middlewares/validateToken');
 
 route.post('/', validateToken, validadeCreateBlogPost, blogPostController.createBlogPost);
+route.get('/', validateToken, blogPostController.getAllBlogPosts);
 
 module.exports = route;

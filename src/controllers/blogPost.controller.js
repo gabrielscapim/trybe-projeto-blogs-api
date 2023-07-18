@@ -18,6 +18,18 @@ const createBlogPost = async (req, res) => {
     }
 };
 
+const getAllBlogPosts = async (req, res) => {
+    try {
+        const blogPosts = await blogPostService.getAllBlogPosts();
+
+        return res.status(200).json(blogPosts);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: 'Erro interno' });
+    }
+};
+
 module.exports = {
     createBlogPost,
+    getAllBlogPosts,
 };
