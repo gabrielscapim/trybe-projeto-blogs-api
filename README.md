@@ -15,6 +15,3 @@ Este projeto foi realizado durante uma das avaliações do curso de desenvolvime
     <img src="https://skillicons.dev/icons?i=git,nodejs,js,sequelize,mysql,express" />
   </a>
 </p>
-
-## ✅ Demonstração
-
