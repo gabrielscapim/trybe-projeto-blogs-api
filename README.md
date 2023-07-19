@@ -1,10 +1,20 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# 💻 Sobre o projeto
+
+Este projeto foi realizado durante uma das avaliações do curso de desenvolvimento web da <a href="https://betrybe.com/" target="_blank">Trybe</a> e consistiu no desenvolvimento de uma API e um Banco de Dados para um Blog.
+
+## ⚙️ Funcionalidades
+
+- CRUD usuários, posts, categorias
+- Banco de dados em SQL e relacionamentos entre entidades
+- Segurança via JWT
+
+## 🛠 Tecnologias
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,nodejs,js,sequelize,mysql,express" />
+  </a>
+</p>
+
+## ✅ Demonstração
+
